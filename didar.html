@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ozge Qadam - Экосистема чистоты №1 в Казахстане. Профессиональный клининг в Алматы и Талдыкоргане с инновационным трекингом.">
+    <meta name="keywords" content="клининг, уборка, чистка, Алматы, Талдыкорган, профессиональная уборка">
+    <meta name="author" content="Ozge QONYS">
+    
+    <!-- Open Graph для социальных сетей -->
+    <meta property="og:title" content="Ozge Qadam | Экосистема Чистоты №1">
+    <meta property="og:description" content="Европейские стандарты клининга с инновационным трекингом сотрудников.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ozgeqadam.kz">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac">
+    
+    <!-- Структурированные данные для SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Ozge Qadam",
+        "description": "Экосистема чистоты №1 в Казахстане",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Алматы",
+            "addressCountry": "KZ",
+            "streetAddress": "Пр. Аль-Фараби 17/1, БЦ 'Нурлы Тау'"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "43.2371",
+            "longitude": "76.9456"
+        },
+        "openingHours": "Mo-Su 08:00-22:00",
+        "telephone": "+77755088820",
+        "priceRange": "₸ 12000 - 80000",
+        "url": "https://ozgeqadam.kz",
+        "sameAs": [
+            "https://instagram.com/ozgeqadam",
+            "https://facebook.com/ozgeqadam"
+        ]
+    }
+    </script>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0a2540">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
+    
+    <title>Ozge Qadam | Экосистема Чистоты №1</title>
+    
+    <!-- Подключение шрифтов -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Библиотеки -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#0a2540',    // Midnight Teal
+                            secondary: '#00d4aa',   // Mint Neon
+                            accent: '#f59e0b',      // Gold
+                            surface: '#f8fafc',
+                            dark: '#061b2e',
+                            slate: '#1e293b',
+                            success: '#10b981',
+                            warning: '#f59e0b',
+                            danger: '#ef4444'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 8s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'shimmer': 'shimmer 2s infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-500px 0' },
+                            '100%': { backgroundPosition: '500px 0' },
+                        },
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-shimmer': 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        [x-cloak] { display: none !important; }
+        
+        body { 
+            font-family: 'Outfit', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Улучшенный скроллбар */
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { 
+            background: linear-gradient(45deg, #0a2540, #00d4aa);
+            border-radius: 5px;
+            border: 2px solid #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(45deg, #061b2e, #00b894); }
+
+        /* Кастомные маркеры Leaflet */
+        .custom-marker { background: none; border: none; }
+        .marker-wrapper {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .marker-icon-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a2540, #00d4aa);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            border: 2px solid #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .marker-img {
+            position: relative;
+            z-index: 10;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+        .marker-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 212, 170, 0.3);
+            border-radius: 50%;
+            animation: marker-pulse 2s infinite;
+        }
+        @keyframes marker-pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        /* Эффекты карточек */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(10, 37, 64, 0.1);
+        }
+        .neo-button {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .neo-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .neo-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        .neo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 212, 170, 0.3);
+        }
+
+        /* Стили для Калькулятора */
+        input[type="range"]::-webkit-scrollbar { display: none; }
+        .range-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(90deg, #e2e8f0, #0a2540);
+            border-radius: 10px;
+            outline: none;
+        }
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 28px;
+            height: 28px;
+            background: #00d4aa;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+        .range-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 15px rgba(0, 212, 170, 0.4);
+        }
+
+        /* Анимации */
+        .animate-gradient {
+            background-size: 400% 400%;
+            background-image: linear-gradient(-45deg, #0a2540, #00d4aa, #f59e0b, #0a2540);
+            animation: gradient 8s ease infinite;
+        }
+
+        /* Тёмная тема */
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Адаптивные улучшения */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            .mobile-menu.open {
+                transform: translateX(0);
+            }
+        }
+
+        /* Кастомные чекбоксы */
+        .custom-checkbox {
+            position: relative;
+            cursor: pointer;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 24px;
+            width: 24px;
+            background-color: #fff;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #00d4aa;
+            border-color: #00d4aa;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+            left: 8px;
+            top: 4px;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* Лоадер */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #00d4aa;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body x-data="ozgeApp()" class="bg-slate-50 text-slate-900 leading-tight" 
+      :class="{'dark': darkMode}" 
+      @scroll.window="handleScroll()">
+
+    <!-- Уведомления -->
+    <div x-cloak x-show="notification.show" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 transform translate-y-4"
+         x-transition:enter-end="opacity-100 transform translate-y-0"
+         class="fixed top-6 right-6 z-[10000] max-w-sm">
+        <div class="p-4 rounded-2xl shadow-2xl border"
+             :class="{
+                 'bg-green-50 border-green-200 text-green-800': notification.type === 'success',
+                 'bg-blue-50 border-blue-200 text-blue-800': notification.type === 'info',
+                 'bg-red-50 border-red-200 text-red-800': notification.type === 'error'
+             }">
+            <div class="flex items-center gap-3">
+                <i class="text-xl" :class="notification.icon"></i>
+                <div class="flex-1">
+                    <p class="font-bold" x-text="notification.title"></p>
+                    <p class="text-sm mt-1" x-text="notification.message"></p>
+                </div>
+                <button @click="notification.show = false" class="text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Быстрые действия (плавающая панель) -->
+    <div class="fixed right-6 bottom-6 z-50 flex flex-col gap-3">
+        <button @click="toggleDarkMode()" 
+                class="w-14 h-14 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl flex items-center justify-center text-slate-700 dark:text-slate-300 hover:scale-110 transition-transform">
+            <i class="fa-solid fa-moon text-xl" x-show="!darkMode"></i>
+            <i class="fa-solid fa-sun text-xl" x-show="darkMode"></i>
+        </button>
+        
+        <button @click="openModal('language')" 
+                class="w-14 h-14 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl flex items-center justify-center text-slate-700 dark:text-slate-300 hover:scale-110 transition-transform">
+            <i class="fa-solid fa-globe text-xl"></i>
+        </button>
+        
+        <button @click="openModal('currency')" 
+                class="w-14 h-14 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl flex items-center justify-center text-slate-700 dark:text-slate-300 hover:scale-110 transition-transform">
+            <span class="text-lg font-bold" x-text="currencySymbols[activeCurrency]"></span>
+        </button>
+        
+        <a href="https://wa.me/77755088820" target="_blank" 
+           class="w-14 h-14 bg-brand-secondary text-white rounded-2xl shadow-2xl flex items-center justify-center hover:scale-110 transition-transform animate-pulse-slow">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <!-- Основной контент -->
+    <div x-show="view === 'client'" x-transition:enter="transition ease-out duration-500" class="relative">
+        
+        <!-- Мобильное меню -->
+        <div x-cloak x-show="mobileMenuOpen" class="fixed inset-0 z-[200] lg:hidden">
+            <div class="absolute inset-0 bg-black/50" @click="mobileMenuOpen = false"></div>
+            <div class="absolute top-0 left-0 h-full w-80 bg-white dark:bg-slate-900 shadow-2xl overflow-y-auto mobile-menu open">
+                <div class="p-8 space-y-8">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-brand-primary rounded-2xl flex items-center justify-center text-white">
+                                <i class="fa-solid fa-wind text-xl"></i>
+                            </div>
+                            <span class="text-xl font-black">OZGE QONYS</span>
+                        </div>
+                        <button @click="mobileMenuOpen = false" class="p-2">
+                            <i class="fa-solid fa-xmark text-2xl text-slate-400"></i>
+                        </button>
+                    </div>
+                    
+                    <nav class="space-y-6">
+                        <template x-for="item in menuItems">
+                            <a :href="item.link" @click="mobileMenuOpen = false" 
+                               class="block text-lg font-bold text-slate-700 dark:text-slate-300 hover:text-brand-primary transition-colors">
+                                <span x-text="item.name"></span>
+                            </a>
+                        </template>
+                    </nav>
+                    
+                    <div class="pt-8 border-t border-slate-200 dark:border-slate-800 space-y-6">
+                        <button @click="openModal('login')" 
+                                class="w-full py-4 bg-slate-100 dark:bg-slate-800 rounded-xl font-bold flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>Вход для партнёров</span>
+                        </button>
+                        
+                        <div class="flex gap-4">
+                            <button @click="toggleDarkMode()" class="flex-1 py-3 bg-slate-100 dark:bg-slate-800 rounded-xl">
+                                <i class="fa-solid" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
+                            </button>
+                            <button @click="openModal('language')" class="flex-1 py-3 bg-slate-100 dark:bg-slate-800 rounded-xl">
+                                <i class="fa-solid fa-globe"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Шапка -->
+        <header class="fixed top-0 w-full z-[100] transition-all duration-300 backdrop-blur-xl" 
+                :class="scrolled ? 'bg-white/90 dark:bg-slate-900/90 shadow-xl py-3' : 'bg-transparent py-6'">
+            <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                <!-- Логотип -->
+                <div class="flex items-center gap-3 group cursor-pointer" @click="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="w-12 h-12 bg-brand-primary rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:rotate-12 transition-transform duration-500">
+                          <img src="logo.jpeg" alt="logo.jpeg" class="logo">
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black tracking-tighter text-slate-800 dark:text-white">
+                            OZGE <span class="text-brand-primary underline decoration-brand-accent decoration-4 underline-offset-4">QONYS</span>
+                        </span>
+                        <p class="text-[10px] uppercase font-bold tracking-[0.3em] text-slate-400"> Every corner counts</p>
+                    </div>
+                </div>
+
+                <!-- Навигация для десктопа -->
+                <nav class="hidden lg:flex items-center gap-10">
+                    <template x-for="item in menuItems">
+                        <a :href="item.link" 
+                           class="text-sm font-extrabold text-slate-600 dark:text-slate-400 hover:text-brand-primary transition-colors tracking-wide uppercase relative group">
+                            <span x-text="item.name"></span>
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-primary group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                    </template>
+                </nav>
+
+                <!-- Действия -->
+                <div class="flex items-center gap-4">
+                    <!-- Переключатель темы -->
+                    <button @click="toggleDarkMode()" class="hidden md:block p-2 text-slate-600 dark:text-slate-400 hover:text-brand-primary">
+                        <i class="fa-solid fa-moon text-xl" x-show="!darkMode"></i>
+                        <i class="fa-solid fa-sun text-xl" x-show="darkMode"></i>
+                    </button>
+                    
+                    <!-- Язык -->
+                    <button @click="openModal('language')" class="hidden md:block p-2 text-slate-600 dark:text-slate-400 hover:text-brand-primary">
+                        <i class="fa-solid fa-globe text-xl"></i>
+                    </button>
+                    
+                    <!-- Вход -->
+                    <button @click="openModal('login')" 
+                            class="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:bg-brand-primary hover:text-white transition-all neo-button">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span>Войти</span>
+                    </button>
+                    
+                    <!-- Заказ -->
+                    <button @click="openModal('order', {price: totalPrice()})" 
+                            class="px-7 py-3 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-xl font-extrabold shadow-lg shadow-emerald-500/30 neo-button">
+                        БЫСТРЫЙ ЗАКАЗ
+                    </button>
+                    
+                    <!-- Мобильное меню -->
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2">
+                        <i class="fa-solid fa-bars text-2xl text-slate-600 dark:text-slate-400"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Герой секция -->
+        <section class="relative pt-40 pb-32 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-brand-surface via-white to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-brand-dark -z-10"></div>
+            <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <!-- Бейдж локаций -->
+                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm animate-bounce-slow">
+                        <span class="flex h-3 w-3 rounded-full bg-brand-primary"></span>
+                        <span class="text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-400">
+                            <i class="fa-solid fa-location-dot mr-2"></i>Almaty & Taldykorgan
+                        </span>
+                    </div>
+                    
+                    <!-- Заголовок -->
+                    <h1 class="text-6xl lg:text-8xl font-black text-slate-900 dark:text-white leading-[0.95] tracking-tighter">
+                        Больше чем <br> просто <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-secondary">чистота.</span>
+                    </h1>
+                    
+                    <!-- Описание -->
+                    <p class="text-xl text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed font-medium">
+                        Мы объединили европейские стандарты клининга с инновационным трекингом сотрудников. Контролируйте каждый шаг через смартфон.
+                    </p>
+                    
+                    <!-- Кнопки действий -->
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <button @click="scrollTo('calculator')" 
+                                class="px-10 py-5 bg-gradient-to-r from-brand-primary to-slate-900 dark:to-brand-dark text-white rounded-2xl font-black text-lg hover:opacity-90 transition-all shadow-2xl neo-button">
+                            РАССЧИТАТЬ ЦЕНУ
+                        </button>
+                        
+                        <!-- Рейтинг -->
+                        <div class="flex items-center gap-4 p-4 glass-card rounded-2xl border border-slate-200 dark:border-slate-700">
+                            <div class="flex -space-x-4">
+                                <template x-for="i in 4">
+                                    <img :src="`https://i.pravatar.cc/100?u=${i}`" 
+                                         class="w-12 h-12 rounded-full border-4 border-white dark:border-slate-800 object-cover">
+                                </template>
+                            </div>
+                            <div>
+                                <p class="text-lg font-black text-slate-800 dark:text-white">4.95/5</p>
+                                <p class="text-xs font-bold text-slate-400 uppercase">Рейтинг отзывов</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Быстрые действия -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6">
+                        <div class="text-center p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                            <i class="fa-solid fa-shield-alt text-brand-primary text-xl mb-2"></i>
+                            <p class="text-xs font-bold text-slate-600 dark:text-slate-400">Гарантия</p>
+                        </div>
+                        <div class="text-center p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                            <i class="fa-solid fa-clock text-brand-secondary text-xl mb-2"></i>
+                            <p class="text-xs font-bold text-slate-600 dark:text-slate-400">24/7</p>
+                        </div>
+                        <div class="text-center p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                            <i class="fa-solid fa-users text-brand-accent text-xl mb-2"></i>
+                            <p class="text-xs font-bold text-slate-600 dark:text-slate-400">20+ спецов</p>
+                        </div>
+                        <div class="text-center p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                            <i class="fa-solid fa-trophy text-yellow-500 text-xl mb-2"></i>
+                            <p class="text-xs font-bold text-slate-600 dark:text-slate-400">№1 в РК</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Изображение -->
+                <div class="relative group">
+                    <div class="absolute -inset-10 bg-gradient-to-r from-brand-primary/20 to-brand-secondary/20 blur-[100px] rounded-full group-hover:scale-110 transition-all duration-700"></div>
+                    <div class="relative rounded-[60px] overflow-hidden shadow-2xl border-[12px] border-white dark:border-slate-800 animate-float">
+                        <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1000&q=80" 
+                             class="w-full h-[600px] object-cover scale-110 group-hover:scale-100 transition-transform duration-1000">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-10 left-10 text-white">
+                            <p class="text-4xl font-black">VIP СЕРВИС</p>
+                            <p class="text-brand-secondary font-bold text-xl">От <span x-text="formatPrice(15000)"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция услуг -->
+        <section id="services" class="py-24 bg-white dark:bg-slate-900">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div class="max-w-2xl">
+                        <h2 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter mb-4 uppercase italic">
+                            Наши услуги
+                        </h2>
+                        <div class="h-2 w-40 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-full"></div>
+                    </div>
+                    <button @click="openModal('services')" 
+                            class="px-6 py-3 border-2 border-slate-200 dark:border-slate-700 rounded-xl font-bold text-slate-600 dark:text-slate-400 hover:border-brand-primary hover:text-brand-primary transition-all">
+                        Смотреть все услуги →
+                    </button>
+                </div>
+
+                <!-- Услуги сетка -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <template x-for="service in services.slice(0, 3)">
+                        <div class="group relative p-10 rounded-[40px] border border-slate-100 dark:border-slate-800 hover:border-brand-primary transition-all duration-500 overflow-hidden cursor-pointer"
+                             @click="openModal('service', service)">
+                            <div class="absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br from-brand-primary/10 to-brand-secondary/10 rounded-full group-hover:scale-[5] transition-transform duration-700 -z-10"></div>
+                            <div class="w-16 h-16 bg-white dark:bg-slate-800 shadow-xl rounded-2xl flex items-center justify-center text-brand-primary text-3xl mb-8 group-hover:bg-gradient-to-br group-hover:from-brand-primary group-hover:to-brand-secondary group-hover:text-white transition-all duration-500">
+                                <i :class="service.icon"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter" x-text="service.title"></h3>
+                            <p class="text-slate-500 dark:text-slate-400 font-medium mb-8 leading-relaxed" x-text="service.description"></p>
+                            <ul class="space-y-3 mb-10">
+                                <template x-for="item in service.features">
+                                    <li class="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
+                                        <i class="fa-solid fa-check text-brand-secondary"></i>
+                                        <span x-text="item"></span>
+                                    </li>
+                                </template>
+                            </ul>
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-xs font-black text-slate-400 uppercase">
+                                    От <span class="text-xl text-slate-900 dark:text-white" x-text="formatPrice(service.price)"></span>
+                                </span>
+                                <i class="fa-solid fa-arrow-right text-slate-300 group-hover:translate-x-2 group-hover:text-brand-secondary transition-all"></i>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <!-- Калькулятор -->
+        <section id="calculator" class="py-24 bg-slate-100 dark:bg-slate-800 relative overflow-hidden">
+            <div class="absolute left-0 bottom-0 w-full h-1/2 bg-white dark:bg-slate-900 -z-10 rounded-tr-[300px]"></div>
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 space-y-4">
+                    <h2 class="text-5xl font-black text-slate-900 dark:text-white tracking-tighter uppercase">Умный Калькулятор</h2>
+                    <p class="text-slate-500 dark:text-slate-400 font-bold">Честная цена за 15 секунд. Проверьте сами.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-10">
+                    <!-- Левая часть -->
+                    <div class="lg:col-span-8 space-y-8 bg-white dark:bg-slate-900 p-12 rounded-[50px] shadow-2xl border border-white dark:border-slate-800">
+                        <!-- Промокод -->
+                        <div class="p-6 bg-gradient-to-r from-brand-primary/10 to-brand-secondary/10 rounded-3xl border border-brand-primary/20">
+                            <div class="flex flex-col sm:flex-row items-center gap-4">
+                                <div class="flex-1">
+                                    <label class="text-sm font-black text-slate-400 uppercase tracking-widest">Промокод</label>
+                                    <input type="text" x-model="promoCode" placeholder="Введите промокод" 
+                                           class="w-full bg-transparent border-0 text-xl font-bold outline-none placeholder:text-slate-400">
+                                </div>
+                                <button @click="applyPromo()" 
+                                        class="px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-xl font-black hover:opacity-90 transition-all">
+                                    ПРИМЕНИТЬ
+                                </button>
+                            </div>
+                            <p x-show="promoApplied" class="text-green-600 font-bold mt-3">
+                                <i class="fa-solid fa-check-circle mr-2"></i> Промокод <span x-text="promoCode"></span> применён! Скидка 20%
+                            </p>
+                            <p x-show="promoError" class="text-red-600 font-bold mt-3">
+                                <i class="fa-solid fa-exclamation-circle mr-2"></i> Неверный промокод
+                            </p>
+                        </div>
+
+                        <!-- Основные параметры -->
+                        <div class="grid md:grid-cols-2 gap-12">
+                            <!-- Площадь и комнаты -->
+                            <div class="space-y-10">
+                                <!-- Площадь -->
+                                <div class="space-y-6">
+                                    <div class="flex justify-between items-end">
+                                        <label class="text-sm font-black text-slate-400 uppercase tracking-widest">Площадь уборки</label>
+                                        <span class="text-3xl font-black text-brand-primary" x-text="sqm + ' м²'"></span>
+                                    </div>
+                                    <input type="range" x-model="sqm" min="20" max="300" step="5" class="range-slider">
+                                    <div class="flex justify-between text-[10px] font-black text-slate-400 uppercase">
+                                        <span>20 м²</span>
+                                        <span>300 м²</span>
+                                    </div>
+                                </div>
+
+                                <!-- Комнаты и санузлы -->
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div class="space-y-4">
+                                        <label class="text-xs font-black text-slate-400 uppercase tracking-widest">Комнаты</label>
+                                        <div class="flex items-center justify-between bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border-2 border-slate-100 dark:border-slate-700">
+                                            <button @click="if(rooms > 1) rooms--" 
+                                                    class="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 shadow-sm hover:bg-brand-primary hover:text-white transition-all font-bold">
+                                                -
+                                            </button>
+                                            <span class="text-2xl font-black text-slate-800 dark:text-white" x-text="rooms"></span>
+                                            <button @click="rooms++" 
+                                                    class="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 shadow-sm hover:bg-brand-primary hover:text-white transition-all font-bold">
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <label class="text-xs font-black text-slate-400 uppercase tracking-widest">Санузлы</label>
+                                        <div class="flex items-center justify-between bg-slate-50 dark:bg-slate-800 p-4 rounded-2xl border-2 border-slate-100 dark:border-slate-700">
+                                            <button @click="if(baths > 1) baths--" 
+                                                    class="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 shadow-sm hover:bg-brand-primary hover:text-white transition-all font-bold">
+                                                -
+                                            </button>
+                                            <span class="text-2xl font-black text-slate-800 dark:text-white" x-text="baths"></span>
+                                            <button @click="baths++" 
+                                                    class="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 shadow-sm hover:bg-brand-primary hover:text-white transition-all font-bold">
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Город -->
+                                <div class="space-y-4">
+                                    <label class="text-xs font-black text-slate-400 uppercase tracking-widest">Город</label>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <button @click="city = 'almaty'" 
+                                                :class="city === 'almaty' ? 'bg-brand-primary text-white' : 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400'"
+                                                class="py-3 rounded-xl font-bold transition-all">
+                                            Алматы
+                                        </button>
+                                        <button @click="city = 'taldykorgan'" 
+                                                :class="city === 'taldykorgan' ? 'bg-brand-primary text-white' : 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400'"
+                                                class="py-3 rounded-xl font-bold transition-all">
+                                            Талдыкорган
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Дополнительные опции -->
+                            <div class="space-y-6">
+                                <label class="text-sm font-black text-slate-400 uppercase tracking-widest block">Дополнительные опции</label>
+                                <div class="grid grid-cols-1 gap-3">
+                                    <template x-for="(extra, key) in extras">
+                                        <label class="flex items-center justify-between p-4 rounded-2xl border-2 cursor-pointer transition-all"
+                                               :class="extra.active ? 
+                                                       'border-brand-primary bg-brand-primary/5 dark:bg-brand-primary/10' : 
+                                                       'border-slate-50 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:border-slate-200 dark:hover:border-slate-700'">
+                                            <div class="flex items-center gap-3">
+                                                <input type="checkbox" x-model="extra.active" class="hidden">
+                                                <div class="w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all"
+                                                     :class="extra.active ? 
+                                                             'bg-brand-primary border-brand-primary' : 
+                                                             'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600'">
+                                                    <i class="fa-solid fa-check text-[10px] text-white" x-show="extra.active"></i>
+                                                </div>
+                                                <span class="font-bold text-slate-700 dark:text-slate-300" x-text="extra.name"></span>
+                                            </div>
+                                            <span class="text-xs font-black text-brand-primary" x-text="'+' + formatPrice(extra.price)"></span>
+                                        </label>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Типы услуг -->
+                        <div class="pt-10 border-t border-slate-100 dark:border-slate-800 grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <template x-for="type in serviceTypes">
+                                <button @click="activeType = type.id" 
+                                        class="p-4 rounded-2xl border-2 font-black text-xs uppercase tracking-widest transition-all"
+                                        :class="activeType === type.id ? 
+                                                'border-brand-primary bg-gradient-to-r from-brand-primary to-brand-secondary text-white shadow-lg' : 
+                                                'border-slate-100 dark:border-slate-800 text-slate-400 hover:border-slate-200 dark:hover:border-slate-700'"
+                                        x-text="type.name"></button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Правая часть - Итог -->
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="bg-gradient-to-br from-brand-primary to-slate-900 dark:to-brand-dark p-10 rounded-[50px] text-white shadow-2xl sticky top-32">
+                            <div class="flex items-center gap-4 mb-10">
+                                <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl backdrop-blur-sm">
+                                    <i class="fa-solid fa-wallet"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300">Итоговая стоимость</p>
+                                    <p class="text-xs text-brand-secondary font-bold italic">Фиксированная цена</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-6 mb-12">
+                                <div class="flex justify-between items-baseline">
+                                    <span class="text-6xl font-black text-white" x-text="formatPrice(totalPrice())"></span>
+                                    <span class="text-2xl font-black text-brand-secondary" x-text="currencySymbols[activeCurrency]"></span>
+                                </div>
+                                
+                                <div class="p-4 bg-white/5 rounded-2xl border border-white/10 space-y-2 backdrop-blur-sm">
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase flex justify-between">
+                                        Базовая уборка: <span class="text-white" x-text="formatPrice(basePrice())"></span>
+                                    </p>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase flex justify-between">
+                                        Доп. услуги: <span class="text-white" x-text="formatPrice(extrasTotal())"></span>
+                                    </p>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase flex justify-between">
+                                        Коэффициент типа: <span class="text-white" x-text="'x' + typeMultiplier()"></span>
+                                    </p>
+                                    <template x-if="promoApplied">
+                                        <p class="text-[10px] font-bold text-green-400 uppercase flex justify-between">
+                                            Скидка (промокод): <span class="text-green-400" x-text="'-' + formatPrice(totalPrice() * 0.2)"></span>
+                                        </p>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <button @click="openModal('order', {price: finalPrice()})" 
+                                    class="w-full py-6 bg-gradient-to-r from-brand-secondary to-emerald-500 text-white rounded-3xl font-black text-xl hover:opacity-90 transition-all shadow-xl shadow-emerald-900/50 group neo-button">
+                                ЗАБРОНИРОВАТЬ <i class="fa-solid fa-chevron-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+
+                            <p class="text-center text-[10px] text-slate-500 mt-6 font-bold uppercase tracking-widest">Бесплатная отмена за 24 часа</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Команда -->
+        <section id="team" class="py-32 bg-white dark:bg-slate-900 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-20 gap-8">
+                    <div class="text-center md:text-left">
+                        <h2 class="text-5xl font-black text-slate-900 dark:text-white tracking-tighter uppercase mb-4 italic">Наши Звёзды</h2>
+                        <p class="text-slate-500 dark:text-slate-400 font-bold max-w-lg uppercase text-sm tracking-widest">Только проверенные сотрудники с рейтингом 4.8+</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="px-8 py-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 text-center">
+                            <p class="text-3xl font-black text-brand-primary">15</p>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">В Алматы</p>
+                        </div>
+                        <div class="px-8 py-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 text-center">
+                            <p class="text-3xl font-black text-brand-accent">5</p>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">В Талдыкоргане</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <template x-for="worker in activeWorkers.slice(0, 8)">
+                        <div class="group relative bg-white dark:bg-slate-800 p-2 rounded-[45px] border border-slate-100 dark:border-slate-700 hover:shadow-2xl transition-all duration-700 cursor-pointer overflow-hidden">
+                            <div class="relative h-80 rounded-[40px] overflow-hidden mb-6">
+                                <img :src="worker.img" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full" :class="worker.status === 'working' ? 'bg-green-500 animate-pulse' : 'bg-yellow-500'"></span>
+                                    <span x-text="worker.city"></span>
+                                </div>
+                                <div class="absolute bottom-6 left-6 right-6 translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
+                                    <button @click="focusWorker(worker)" class="w-full py-3 bg-brand-primary text-white rounded-2xl font-black text-xs uppercase tracking-widest">
+                                        Профиль
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6 text-center">
+                                <h3 class="text-xl font-black text-slate-900 dark:text-white mb-1" x-text="worker.name"></h3>
+                                <div class="flex justify-center items-center gap-2 mb-4">
+                                    <div class="flex text-yellow-500 text-xs">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="text-xs font-black text-slate-400 tracking-widest uppercase">4.95 (150+)</span>
+                                </div>
+                                <div class="flex justify-between items-center pt-4 border-t border-slate-50 dark:border-slate-700">
+                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Специализация:</span>
+                                    <span class="text-[10px] font-black text-brand-primary uppercase tracking-widest">VIP CLIN</span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                
+                <div class="mt-20 text-center">
+                    <button @click="openModal('team')" 
+                            class="px-12 py-5 border-4 border-slate-900 dark:border-white text-slate-900 dark:text-white rounded-3xl font-black text-lg hover:bg-slate-900 dark:hover:bg-white hover:text-white dark:hover:text-slate-900 transition-all uppercase italic tracking-tighter shadow-xl neo-button">
+                        Показать всю команду <i class="fa-solid fa-users ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Отзывы -->
+        <section id="reviews" class="py-24 bg-slate-100 dark:bg-slate-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-black text-slate-900 dark:text-white tracking-tighter uppercase mb-4">Что говорят клиенты</h2>
+                    <p class="text-slate-500 dark:text-slate-400 font-bold">Более 500 довольных клиентов по всему Казахстану</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <template x-for="review in reviews">
+                        <div class="bg-white dark:bg-slate-900 p-8 rounded-[40px] border border-slate-100 dark:border-slate-700 hover:border-brand-primary transition-all">
+                            <div class="flex items-center gap-4 mb-6">
+                                <img :src="review.avatar" class="w-14 h-14 rounded-full object-cover">
+                                <div>
+                                    <h4 class="font-black text-slate-900 dark:text-white" x-text="review.name"></h4>
+                                    <div class="flex text-yellow-500 text-sm">
+                                        <template x-for="i in review.rating">
+                                            <i class="fa-solid fa-star"></i>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-400 italic" x-text="review.text"></p>
+                            <div class="flex items-center justify-between mt-6 pt-6 border-t border-slate-100 dark:border-slate-700">
+                                <span class="text-xs font-bold text-slate-400" x-text="review.date"></span>
+                                <span class="text-xs font-black text-slate-400 uppercase" x-text="review.city"></span>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <!-- Футер -->
+        <footer id="footer" class="bg-slate-900 dark:bg-black pt-32 pb-12 overflow-hidden relative">
+            <div class="absolute -right-40 -top-40 w-96 h-96 bg-brand-primary/10 rounded-full blur-[100px]"></div>
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-12 gap-16 mb-24">
+                    <!-- Лого и описание -->
+                    <div class="lg:col-span-4 space-y-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-14 h-14 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-2xl flex items-center justify-center text-white text-2xl">
+                                <i class="fa-solid fa-wind"></i>
+                            </div>
+                            <span class="text-3xl font-black tracking-tighter text-white">OZGE QADAM</span>
+                        </div>
+                        <p class="text-slate-400 font-medium leading-relaxed">
+                            Мы меняем отношение к клинингу в Казахстане. Наша миссия — освободить ваше время для того, что действительно важно.
+                        </p>
+                        <div class="flex gap-4">
+                            <template x-for="social in socials">
+                                <a :href="social.link" target="_blank" 
+                                   class="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-white hover:bg-brand-primary hover:border-brand-primary transition-all duration-300">
+                                    <i :class="social.icon + ' text-lg'"></i>
+                                </a>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Быстрые ссылки -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <h4 class="text-sm font-black text-white uppercase tracking-widest italic underline decoration-brand-secondary decoration-2 underline-offset-8">Сервис</h4>
+                        <ul class="space-y-4">
+                            <template x-for="service in services">
+                                <li>
+                                    <a href="#" @click.prevent="openModal('service', service)" 
+                                       class="text-slate-400 font-bold hover:text-white transition-colors" x-text="service.title"></a>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+
+                    <!-- Локации -->
+                    <div class="lg:col-span-3 space-y-6">
+                        <h4 class="text-sm font-black text-white uppercase tracking-widest italic underline decoration-brand-secondary decoration-2 underline-offset-8">Локации</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-location-dot text-brand-secondary mt-1"></i>
+                                <div>
+                                    <p class="text-white font-black text-sm uppercase italic">Алматы</p>
+                                    <p class="text-slate-500 text-xs font-bold leading-relaxed">Пр. Аль-Фараби 17/1, <br>БЦ "Нурлы Тау"</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-location-dot text-brand-accent mt-1"></i>
+                                <div>
+                                    <p class="text-white font-black text-sm uppercase italic">Талдыкорган</p>
+                                    <p class="text-slate-500 text-xs font-bold">Ул. Тауелсыздык, 125</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Форма обратной связи -->
+                    <div class="lg:col-span-3">
+                        <div class="p-8 bg-white/5 border border-white/10 rounded-[40px] space-y-6">
+                            <h4 class="text-xl font-black text-white">Есть вопросы?</h4>
+                            <p class="text-slate-400 text-sm font-medium">Оставьте номер, и наш менеджер перезвонит вам в течение 5 минут.</p>
+                            <form @submit.prevent="submitContactForm()" class="space-y-3">
+                                <input type="text" x-model="contactPhone" placeholder="+7 (___) ___-__-__" 
+                                       class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-brand-secondary transition-all">
+                                <button type="submit" 
+                                        class="w-full bg-white text-slate-900 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-brand-secondary hover:text-white transition-all">
+                                    ОТПРАВИТЬ
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Нижняя часть футера -->
+                <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">© 2026 OZGE QADAM. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</p>
+                    <div class="flex gap-8">
+                        <a href="#" @click.prevent="openModal('privacy')" 
+                           class="text-slate-500 text-[10px] font-black uppercase tracking-widest hover:text-white">Политика конфиденциальности</a>
+                        <a href="#" @click.prevent="openModal('offer')" 
+                           class="text-slate-500 text-[10px] font-black uppercase tracking-widest hover:text-white">Публичная оферта</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Админ-панель -->
+    <div x-cloak x-show="view === 'admin'" 
+         class="fixed inset-0 bg-slate-950 z-[9999] flex flex-col overflow-hidden"
+         x-transition:enter="transition transform ease-out duration-500"
+         x-transition:enter-start="scale-110 opacity-0"
+         x-transition:enter-end="scale-100 opacity-100">
+        
+        <header class="h-20 bg-slate-800 border-b border-slate-700 flex justify-between items-center px-8 shadow-2xl relative z-50">
+            <div class="flex items-center gap-6">
+                <div class="w-12 h-12 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg shadow-emerald-900/50">
+                    <i class="fa-solid fa-tower-broadcast animate-pulse"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-black text-white tracking-tighter flex items-center gap-3 italic uppercase">
+                        Center Control HQ
+                        <span class="px-2 py-0.5 bg-brand-accent text-slate-900 text-[9px] rounded font-black tracking-widest animate-pulse">LIVE TRACKING</span>
+                    </h1>
+                    <div class="flex items-center gap-4 text-[10px] font-mono text-slate-400 font-bold uppercase tracking-widest">
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-calendar"></i> <span x-text="currentDate"></span></span>
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-clock"></i> <span x-text="currentTime"></span></span>
+                        <span class="text-green-500 font-black"><i class="fa-solid fa-server"></i> ONLINE</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-8">
+                <div class="hidden xl:flex gap-10">
+                    <div class="text-center">
+                        <p class="text-slate-500 text-[9px] font-black uppercase tracking-[0.2em] mb-1">Всего заказов</p>
+                        <p class="text-white text-xl font-black font-mono">1,429</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-slate-500 text-[9px] font-black uppercase tracking-[0.2em] mb-1">Выручка (мес)</p>
+                        <p class="text-brand-secondary text-xl font-black font-mono">12.4M ₸</p>
+                    </div>
+                </div>
+                
+                <!-- Экспорт данных -->
+                <button @click="exportData()" 
+                        class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-xl font-black text-xs uppercase tracking-widest transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-file-export"></i> Экспорт
+                </button>
+                
+                <button @click="view = 'client'" 
+                        class="px-6 py-3 bg-slate-700 hover:bg-red-500 text-white rounded-xl font-black text-xs uppercase tracking-widest transition-all">
+                    Выход <i class="fa-solid fa-right-from-bracket ml-2"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="flex-1 flex overflow-hidden">
+            <!-- Боковая панель -->
+            <aside class="w-[450px] bg-slate-800 border-r border-slate-700 flex flex-col z-40 shadow-2xl">
+                <div class="p-8 space-y-6">
+                    <!-- Поиск -->
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"></i>
+                        <input type="text" x-model="searchQuery" placeholder="ПОИСК СОТРУДНИКА..." 
+                               class="w-full bg-slate-900/50 border border-slate-700 rounded-2xl pl-12 pr-4 py-4 text-white text-sm font-bold placeholder:text-slate-600 focus:border-brand-secondary outline-none transition-all">
+                    </div>
+                    
+                    <!-- Фильтры -->
+                    <div class="flex gap-2">
+                        <button @click="cityFilter = 'all'" 
+                                :class="cityFilter === 'all' ? 
+                                        'bg-gradient-to-r from-brand-primary to-brand-secondary text-white' : 
+                                        'bg-slate-900/50 text-slate-500'"
+                                class="flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">
+                            Все
+                        </button>
+                        <button @click="cityFilter = 'Алматы'" 
+                                :class="cityFilter === 'Алматы' ? 
+                                        'bg-gradient-to-r from-brand-primary to-brand-secondary text-white' : 
+                                        'bg-slate-900/50 text-slate-500'"
+                                class="flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">
+                            Алматы
+                        </button>
+                        <button @click="cityFilter = 'Талдыкорган'" 
+                                :class="cityFilter === 'Талдыкорган' ? 
+                                        'bg-gradient-to-r from-brand-primary to-brand-secondary text-white' : 
+                                        'bg-slate-900/50 text-slate-500'"
+                                class="flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">
+                            Т-Корган
+                        </button>
+                    </div>
+                    
+                    <!-- Статистика -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-slate-900/50 p-4 rounded-2xl border border-slate-700 text-center">
+                            <p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">На смене</p>
+                            <p class="text-2xl font-black text-white" x-text="activeWorkers.length"></p>
+                        </div>
+                        <div class="bg-slate-900/50 p-4 rounded-2xl border border-slate-700 text-center">
+                            <p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Свободны</p>
+                            <p class="text-2xl font-black text-green-500" x-text="availableWorkers"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Список сотрудников -->
+                <div class="flex-1 overflow-y-auto px-6 pb-8 space-y-4">
+                    <template x-for="worker in filteredWorkers" :key="worker.id">
+                        <div class="group bg-slate-900/40 p-5 rounded-[30px] border border-slate-700/50 hover:border-brand-secondary transition-all cursor-pointer relative overflow-hidden"
+                             :class="{'ring-2 ring-brand-secondary bg-slate-900 shadow-emerald-900/20': selectedWorker?.id === worker.id}"
+                             @click="focusWorker(worker)">
+                            
+                            <div class="absolute -right-10 -top-10 w-32 h-32 bg-brand-secondary/5 rounded-full group-hover:bg-brand-secondary/10 transition-all"></div>
+                            
+                            <div class="flex gap-5 items-center relative z-10">
+                                <!-- Аватар -->
+                                <div class="relative">
+                                    <img :src="worker.img" class="w-16 h-16 rounded-2xl object-cover border-2 border-slate-700 group-hover:border-brand-secondary transition-colors">
+                                    <div class="absolute -bottom-1 -right-1 w-5 h-5 border-4 border-slate-900 rounded-full"
+                                         :class="getStatusColor(worker.status)"></div>
+                                </div>
+                                
+                                <!-- Информация -->
+                                <div class="flex-1 space-y-2">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h4 class="text-white font-black text-sm uppercase tracking-tighter" x-text="worker.name"></h4>
+                                            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest flex items-center gap-1">
+                                                <i class="fa-solid fa-location-dot text-brand-secondary"></i> 
+                                                <span x-text="worker.location"></span>
+                                            </p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Прогресс</p>
+                                            <p class="text-xs font-black text-brand-secondary font-mono" x-text="worker.progress + '%'"></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Прогресс-бар -->
+                                    <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-gradient-to-r from-brand-primary to-brand-secondary transition-all duration-1000 ease-out" 
+                                             :style="`width: ${worker.progress}%`"></div>
+                                    </div>
+                                    
+                                    <!-- Статус -->
+                                    <div class="flex justify-between text-[9px] font-bold uppercase tracking-widest">
+                                        <span class="text-slate-500">Статус:</span>
+                                        <span class="text-white" x-text="getStatusText(worker.status)"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </aside>
+
+            <!-- Основная область с картой -->
+            <main class="flex-1 relative bg-slate-950 overflow-hidden">
+                <div id="admin-map" class="w-full h-full z-10 opacity-80"></div>
+
+                <!-- Карточка выбранного сотрудника -->
+                <div x-cloak x-show="selectedWorker" 
+                     class="absolute bottom-10 left-10 right-10 md:right-auto md:w-[450px] bg-slate-900/90 backdrop-blur-2xl border border-slate-700 p-8 rounded-[40px] shadow-2xl z-50 text-white"
+                     x-transition:enter="transition transform ease-out duration-300"
+                     x-transition:enter-start="translate-y-full opacity-0">
+                    
+                    <!-- Заголовок карточки -->
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="flex items-center gap-6">
+                            <div class="relative">
+                                <img :src="selectedWorker?.img" class="w-24 h-24 rounded-[30px] object-cover border-4 border-brand-secondary shadow-2xl">
+                                <div class="absolute -top-3 -right-3 bg-brand-accent text-slate-900 text-[10px] px-3 py-1 rounded-full font-black uppercase tracking-widest border-4 border-slate-900" 
+                                      x-text="selectedWorker?.status === 'working' ? 'В работе' : 'Свободен'"></div>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-black tracking-tighter uppercase italic" x-text="selectedWorker?.name"></h3>
+                                <p class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-2" x-text="selectedWorker?.city"></p>
+                                <div class="flex text-yellow-500 text-xs">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <span class="text-white ml-2">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button @click="selectedWorker = null" 
+                                class="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <!-- Информация -->
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-slate-800/50 p-5 rounded-3xl border border-slate-700">
+                            <p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2 italic">Объект</p>
+                            <p class="text-sm font-black text-white" x-text="selectedWorker?.location"></p>
+                        </div>
+                        <div class="bg-slate-800/50 p-5 rounded-3xl border border-slate-700">
+                            <p class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2 italic">Время работы</p>
+                            <p class="text-sm font-black text-brand-secondary font-mono" x-text="selectedWorker?.time"></p>
+                        </div>
+                    </div>
+
+                    <!-- Прогресс -->
+                    <div class="space-y-6">
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-400">
+                                <span>Прогресс этапа</span>
+                                <span class="text-brand-secondary" x-text="selectedWorker?.progress + '%'"></span>
+                            </div>
+                            <div class="h-3 bg-slate-800 rounded-full overflow-hidden p-1 border border-slate-700">
+                                <div class="h-full bg-gradient-to-r from-brand-primary to-brand-secondary rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(0,212,170,0.5)]" 
+                                     :style="`width: ${selectedWorker?.progress}%`"></div>
+                            </div>
+                        </div>
+
+                        <!-- Действия -->
+                        <div class="flex gap-4">
+                            <a :href="`tel:${selectedWorker?.phone}`" 
+                               class="flex-1 py-5 bg-white text-slate-900 rounded-2xl font-black text-xs uppercase tracking-widest text-center hover:bg-brand-secondary hover:text-white transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-phone"></i> Звонок
+                            </a>
+                            <a :href="`https://wa.me/${selectedWorker?.phone}`" target="_blank" 
+                               class="flex-1 py-5 bg-emerald-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest text-center hover:bg-emerald-500 transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Панель статистики -->
+                <div class="absolute top-10 left-10 flex gap-6 z-20">
+                    <div class="glass-card p-6 rounded-3xl border border-slate-700 flex items-center gap-6 shadow-2xl">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center text-white">
+                                <i class="fa-solid fa-user-check"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-black text-white uppercase tracking-tighter">На смене</p>
+                                <p class="text-2xl font-black text-white" x-text="activeWorkers.length"></p>
+                            </div>
+                        </div>
+                        <div class="h-10 w-px bg-slate-700"></div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-brand-accent rounded-xl flex items-center justify-center text-slate-900">
+                                <i class="fa-solid fa-spinner animate-spin"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-black text-white uppercase tracking-tighter">В процессе</p>
+                                <p class="text-2xl font-black text-white">18</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Система модальных окон -->
+    <div x-cloak x-show="isModalOpen" class="fixed inset-0 z-[20000] flex items-center justify-center p-6">
+        <!-- Затемнение -->
+        <div class="absolute inset-0 bg-slate-950/90 backdrop-blur-xl" @click="closeModal()" 
+             x-transition:enter="transition opacity-0" x-transition:enter-end="opacity-100"></div>
+        
+        <!-- Контент модального окна -->
+        <div class="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-[60px] shadow-2xl overflow-hidden" 
+             x-transition:enter="transition transform scale-90 opacity-0 duration-300">
+            <button @click="closeModal()" 
+                    class="absolute top-10 right-10 w-12 h-12 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full flex items-center justify-center text-slate-400 transition-all z-50">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <!-- Вход -->
+            <template x-if="modalType === 'login'">
+                <div class="p-12 md:p-20 space-y-10 text-center">
+                    <div class="w-24 h-24 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-[30px] flex items-center justify-center text-white text-4xl mx-auto shadow-2xl shadow-emerald-200 rotate-12">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-4xl font-black text-slate-900 dark:text-white tracking-tighter uppercase italic">Вход для партнёров</h3>
+                        <p class="text-slate-500 dark:text-slate-400 font-bold mt-2">Введите код доступа (123 для теста)</p>
+                    </div>
+                    <form @submit.prevent="loginAdmin()" class="space-y-6">
+                        <input type="password" x-model="loginCode" placeholder="••••" 
+                               class="w-full bg-slate-50 dark:bg-slate-800 border-4 border-slate-100 dark:border-slate-700 rounded-3xl px-8 py-6 text-center text-5xl tracking-[1em] font-black text-slate-800 dark:text-white outline-none focus:border-brand-primary transition-all">
+                        <p x-show="loginError" class="text-red-500 font-black uppercase text-xs tracking-widest animate-bounce">
+                            <i class="fa-solid fa-exclamation-triangle mr-2"></i>ОШИБКА: ДОСТУП ЗАПРЕЩЁН
+                        </p>
+                        <button type="submit" 
+                                class="w-full py-6 bg-slate-900 dark:bg-slate-800 text-white rounded-3xl font-black text-xl hover:bg-brand-primary transition-all shadow-xl uppercase italic tracking-tighter neo-button">
+                            ПРОВЕРИТЬ <i class="fa-solid fa-chevron-right ml-2 text-sm"></i>
+                        </button>
+                    </form>
+                </div>
+            </template>
+
+            <!-- Заказ -->
+            <template x-if="modalType === 'order'">
+                <div class="p-12 md:p-20 space-y-10 text-center">
+                    <div class="w-24 h-24 bg-gradient-to-br from-brand-primary/10 to-brand-secondary/10 dark:from-brand-primary/20 dark:to-brand-secondary/20 rounded-[40px] flex items-center justify-center text-brand-primary dark:text-brand-secondary text-4xl mx-auto shadow-inner">
+                        <i class="fa-solid fa-paper-plane animate-float"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-4xl font-black text-slate-900 dark:text-white tracking-tighter uppercase italic">Почти готово!</h3>
+                        <p class="text-slate-500 dark:text-slate-400 font-bold mt-2">Ваш менеджер свяжется с вами через WhatsApp</p>
+                    </div>
+                    <div class="p-8 bg-slate-50 dark:bg-slate-800 rounded-[40px] border-2 border-slate-100 dark:border-slate-700">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4 italic">Финальная стоимость</p>
+                        <div class="flex items-center justify-center gap-2">
+                            <span class="text-7xl font-black text-slate-900 dark:text-white tracking-tighter" x-text="formatPrice(modalData.price)"></span>
+                            <span class="text-3xl font-black text-brand-primary underline decoration-brand-accent decoration-4" x-text="currencySymbols[activeCurrency]"></span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <a :href="`https://wa.me/77755088820?text=${encodeURIComponent('Здравствуйте! Я хочу заказать уборку. Стоимость в калькуляторе: ' + formatPrice(modalData.price) + '. Город: ' + (city === 'almaty' ? 'Алматы' : 'Талдыкорган'))}`" 
+                           target="_blank" 
+                           class="w-full py-6 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-3xl font-black text-xl hover:opacity-90 transition-all shadow-xl text-center uppercase tracking-tighter italic neo-button">
+                            ОТПРАВИТЬ ЗАЯВКУ <i class="fa-brands fa-whatsapp ml-2"></i>
+                        </a>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Нажимая кнопку, вы соглашаетесь с офертой</p>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Все услуги -->
+            <template x-if="modalType === 'services'">
+                <div class="p-8 md:p-12">
+                    <div class="text-center mb-12">
+                        <h3 class="text-4xl font-black text-slate-900 dark:text-white tracking-tighter uppercase italic mb-4">Все услуги</h3>
+                        <p class="text-slate-500 dark:text-slate-400">Выберите подходящую услугу для вашего дома или офиса</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8 max-h-[70vh] overflow-y-auto p-4">
+                        <template x-for="service in allServices">
+                            <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-[40px] border border-slate-100 dark:border-slate-700 hover:border-brand-primary transition-all cursor-pointer"
+                                 @click="openModal('service', service)">
+                                <div class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-2xl flex items-center justify-center text-white text-2xl mb-6">
+                                    <i :class="service.icon"></i>
+                                </div>
+                                <h4 class="text-2xl font-black text-slate-900 dark:text-white mb-3" x-text="service.title"></h4>
+                                <p class="text-slate-600 dark:text-slate-400 mb-6" x-text="service.description"></p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-black text-slate-900 dark:text-white" x-text="formatPrice(service.price)"></span>
+                                    <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Детали услуги -->
+            <template x-if="modalType === 'service'">
+                <div class="p-8 md:p-12">
+                    <div class="flex items-start gap-6 mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-2xl flex items-center justify-center text-white text-3xl">
+                            <i :class="modalData.icon"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-black text-slate-900 dark:text-white tracking-tighter uppercase" x-text="modalData.title"></h3>
+                            <p class="text-slate-500 dark:text-slate-400 mt-2" x-text="modalData.description"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-lg font-black text-slate-900 dark:text-white mb-4">Что входит:</h4>
+                            <ul class="space-y-3">
+                                <template x-for="feature in modalData.features">
+                                    <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                                        <i class="fa-solid fa-check text-brand-secondary"></i>
+                                        <span x-text="feature"></span>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-black text-slate-900 dark:text-white mb-4">Детали:</h4>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl">
+                                    <span class="font-bold text-slate-600 dark:text-slate-400">Стоимость от:</span>
+                                    <span class="text-2xl font-black text-brand-primary" x-text="formatPrice(modalData.price)"></span>
+                                </div>
+                                <div class="flex justify-between items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl">
+                                    <span class="font-bold text-slate-600 dark:text-slate-400">Время работы:</span>
+                                    <span class="font-bold text-slate-900 dark:text-white">2-5 часов</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button @click="openModal('order', {price: modalData.price})" 
+                            class="w-full mt-8 py-6 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-3xl font-black text-xl hover:opacity-90 transition-all neo-button">
+                        ЗАКАЗАТЬ ЭТУ УСЛУГУ
+                    </button>
+                </div>
+            </template>
+
+            <!-- Выбор языка -->
+            <template x-if="modalType === 'language'">
+                <div class="p-12 text-center">
+                    <h3 class="text-4xl font-black text-slate-900 dark:text-white tracking-tighter uppercase italic mb-8">Выбор языка</h3>
+                    <div class="grid grid-cols-1 gap-4">
+                        <template x-for="lang in languages">
+                            <button @click="changeLanguage(lang.code)" 
+                                    :class="activeLanguage === lang.code ? 
+                                            'bg-gradient-to-r from-brand-primary to-brand-secondary text-white' : 
+                                            'bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300'"
+                                    class="py-6 rounded-2xl font-black text-xl transition-all neo-button">
+                                <span x-text="lang.name"></span> <span x-text="lang.flag"></span>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Выбор валюты -->
+            <template x-if="modalType === 'currency'">
+                <div class="p-12 text-center">
+                    <h3 class="text-4xl font-black text-slate-900 dark:text-white tracking-tighter uppercase italic mb-8">Выбор валюты</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <template x-for="curr in currencies">
+                            <button @click="changeCurrency(curr.code)" 
+                                    :class="activeCurrency === curr.code ? 
+                                            'bg-gradient-to-r from-brand-primary to-brand-secondary text-white' : 
+                                            'bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300'"
+                                    class="py-6 rounded-2xl font-bold transition-all neo-button">
+                                <div class="text-2xl mb-2" x-text="curr.symbol"></div>
+                                <div x-text="curr.name"></div>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <!-- Основной скрипт приложения -->
+    <script>
+        function ozgeApp() {
+            return {
+                // Состояние приложения
+                view: 'client',
+                scrolled: false,
+                darkMode: false,
+                mobileMenuOpen: false,
+                isModalOpen: false,
+                modalType: null,
+                modalData: {},
+                currentTime: '',
+                currentDate: '',
+                notification: {
+                    show: false,
+                    type: 'info',
+                    title: '',
+                    message: '',
+                    icon: 'fa-solid fa-info-circle'
+                },
+
+                // Калькулятор
+                sqm: 60,
+                rooms: 2,
+                baths: 1,
+                city: 'almaty',
+                activeType: 'standard',
+                promoCode: '',
+                promoApplied: false,
+                promoError: false,
+                extras: {
+                    windows: { name: 'Мойка окон', price: 5000, active: false },
+                    fridge: { name: 'Холодильник', price: 3000, active: false },
+                    oven: { name: 'Духовка', price: 2500, active: false },
+                    balcony: { name: 'Балкон', price: 4000, active: false },
+                    dry: { name: 'Химчистка дивана', price: 12000, active: false }
+                },
+
+                // Админ-панель
+                loginCode: '',
+                loginError: false,
+                searchQuery: '',
+                cityFilter: 'all',
+                selectedWorker: null,
+                availableWorkers: 5,
+                
+                // Мультиязычность
+                activeLanguage: 'ru',
+                languages: [
+                    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+                    { code: 'kk', name: 'Қазақша', flag: '🇰🇿' },
+                    { code: 'en', name: 'English', flag: '🇺🇸' }
+                ],
+                
+                // Мультивалютность
+                activeCurrency: 'kzt',
+                currencies: [
+                    { code: 'kzt', name: 'Тенге', symbol: '₸', rate: 1 },
+                    { code: 'usd', name: 'Доллар', symbol: '$', rate: 450 },
+                    { code: 'rub', name: 'Рубль', symbol: '₽', rate: 5 }
+                ],
+                currencySymbols: {
+                    kzt: '₸',
+                    usd: '$',
+                    rub: '₽'
+                },
+
+                // Навигация
+                menuItems: [
+                    { name: 'Услуги', link: '#services' },
+                    { name: 'Цены', link: '#calculator' },
+                    { name: 'Команда', link: '#team' },
+                    { name: 'Отзывы', link: '#reviews' },
+                    { name: 'Контакты', link: '#footer' }
+                ],
+
+                // Типы услуг
+                serviceTypes: [
+                    { id: 'standard', name: 'Стандарт', mult: 1.0 },
+                    { id: 'premium', name: 'Премиум', mult: 1.4 },
+                    { id: 'vip', name: 'VIP Сервис', mult: 2.1 },
+                    { id: 'after', name: 'После ремонта', mult: 1.8 }
+                ],
+
+                // Услуги (основные)
+                services: [
+                    { 
+                        title: 'Поддерживающая', 
+                        description: 'Регулярная чистота вашего дома каждую неделю.', 
+                        price: 12000, 
+                        icon: 'fa-solid fa-sparkles',
+                        features: ['Влажная уборка', 'Обеспыливание', 'Сантехника', 'Кухня снаружи'] 
+                    },
+                    { 
+                        title: 'Генеральная', 
+                        description: 'Тотальная дезинфекция и чистка каждого угла.', 
+                        price: 25000, 
+                        icon: 'fa-solid fa-broom',
+                        features: ['Все поверхности', 'За мебелью', 'Парогенератор', 'Все шкафы']
+                    },
+                    { 
+                        title: 'После ремонта', 
+                        description: 'Удаление строительной пыли, пятен краски и затирки.', 
+                        price: 40000, 
+                        icon: 'fa-solid fa-hammer',
+                        features: ['УФ-лампы', 'Проф. пылесосы', 'Обеспыливание стен', 'Окна включены']
+                    }
+                ],
+
+                // Все услуги
+                allServices: [
+                    { 
+                        title: 'Поддерживающая', 
+                        description: 'Регулярная чистота вашего дома каждую неделю.', 
+                        price: 12000, 
+                        icon: 'fa-solid fa-sparkles',
+                        features: ['Влажная уборка', 'Обеспыливание', 'Сантехника', 'Кухня снаружи'] 
+                    },
+                    { 
+                        title: 'Генеральная', 
+                        description: 'Тотальная дезинфекция и чистка каждого угла.', 
+                        price: 25000, 
+                        icon: 'fa-solid fa-broom',
+                        features: ['Все поверхности', 'За мебелью', 'Парогенератор', 'Все шкафы']
+                    },
+                    { 
+                        title: 'После ремонта', 
+                        description: 'Удаление строительной пыли, пятен краски и затирки.', 
+                        price: 40000, 
+                        icon: 'fa-solid fa-hammer',
+                        features: ['УФ-лампы', 'Проф. пылесосы', 'Обеспыливание стен', 'Окна включены']
+                    },
+                    { 
+                        title: 'Химчистка', 
+                        description: 'Профессиональная химчистка мебели и ковров.', 
+                        price: 15000, 
+                        icon: 'fa-solid fa-spray-can-sparkles',
+                        features: ['Диваны и кресла', 'Ковры и ковролин', 'Стулья', 'Матрасы']
+                    },
+                    { 
+                        title: 'Офисная уборка', 
+                        description: 'Ежедневная уборка офисных помещений.', 
+                        price: 20000, 
+                        icon: 'fa-solid fa-building',
+                        features: ['Обеспыливание', 'Мойка полов', 'Чистка санузлов', 'Вынос мусора']
+                    },
+                    { 
+                        title: 'VIP Сервис', 
+                        description: 'Премиальный сервис с индивидуальным подходом.', 
+                        price: 50000, 
+                        icon: 'fa-solid fa-crown',
+                        features: ['Эко-средства', 'Индивидуальный менеджер', 'Консьерж-сервис', 'Гарантия качества']
+                    }
+                ],
+
+                // Сотрудники
+                activeWorkers: [
+                    // Алматы
+                    { id: 1, name: 'Алия Муратова', city: 'Алматы', location: 'ЖК Apple Town', time: '2:15:30', progress: 75, phone: '77755088820', status: 'working', lat: 43.2220, lng: 76.8512, img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400' },
+                    { id: 2, name: 'Ержан Болатов', city: 'Алматы', location: 'БЦ Нурлы Тау', time: '0:45:10', progress: 30, phone: '77755088820', status: 'working', lat: 43.2371, lng: 76.9456, img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400' },
+                    { id: 3, name: 'Динара С.', city: 'Алматы', location: 'Мкр. Орбита-3', time: '1:20:00', progress: 50, phone: '77755088820', status: 'working', lat: 43.1950, lng: 76.8800, img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400' },
+                    { id: 4, name: 'Айбек К.', city: 'Алматы', location: 'Мкр. Самал-2', time: '3:10:00', progress: 90, phone: '77755088820', status: 'working', lat: 43.2300, lng: 76.9500, img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400' },
+                    { id: 5, name: 'Марина Л.', city: 'Алматы', location: 'Зеленый Базар', time: '0:15:00', progress: 5, phone: '77755088820', status: 'working', lat: 43.2630, lng: 76.9550, img: 'https://images.unsplash.com/photo-1554151228-14d9def656ec?w=400' },
+                    // Талдыкорган
+                    { id: 6, name: 'Жанна К.', city: 'Талдыкорган', location: 'Парк Жастар', time: '0:00:00', progress: 0, phone: '77755088820', status: 'waiting', lat: 45.0115, lng: 78.3720, img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400' },
+                    { id: 7, name: 'Кайрат Н.', city: 'Талдыкорган', location: 'Мкр. Каратал', time: '3:20:05', progress: 95, phone: '77755088820', status: 'working', lat: 45.0190, lng: 78.3600, img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400' },
+                    { id: 8, name: 'Мадина Е.', city: 'Талдыкорган', location: 'Мкр. Каратал-2', time: '1:45:00', progress: 55, phone: '77755088820', status: 'working', lat: 45.0250, lng: 78.3800, img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400' }
+                ],
+
+                // Отзывы
+                reviews: [
+                    { name: 'Асем Ж.', rating: 5, text: 'Очень профессиональная команда! Приехали вовремя, работали аккуратно. Квартира сияет!', date: '15.02.2024', city: 'Алматы', avatar: 'https://i.pravatar.cc/150?img=1' },
+                    { name: 'Данияр С.', rating: 5, text: 'Заказывал уборку после ремонта. Справились на отлично! Все следы строительства убрали.', date: '10.02.2024', city: 'Талдыкорган', avatar: 'https://i.pravatar.cc/150?img=2' },
+                    { name: 'Марина К.', rating: 5, text: 'Пользуюсь услугами еженедельно. Очень довольна качеством и пунктуальностью.', date: '05.02.2024', city: 'Алматы', avatar: 'https://i.pravatar.cc/150?img=3' }
+                ],
+
+                // Социальные сети
+                socials: [
+                    { icon: 'fa-brands fa-instagram', link: 'https://instagram.com/ozgeqadam' },
+                    { icon: 'fa-brands fa-facebook', link: 'https://facebook.com/ozgeqadam' },
+                    { icon: 'fa-brands fa-whatsapp', link: 'https://wa.me/77755088820' },
+                    { icon: 'fa-brands fa-telegram', link: 'https://t.me/ozgeqadam' }
+                ],
+
+                // Контактная форма
+                contactPhone: '',
+
+                // Leaflet карта
+                map: null,
+                markers: [],
+
+                // Инициализация
+                init() {
+                    // Загрузка сохранённых настроек
+                    this.loadSettings();
+                    
+                    // Настройка скролла
+                    window.addEventListener('scroll', () => {
+                        this.scrolled = window.scrollY > 50;
+                    });
+                    
+                    // Обновление времени
+                    this.updateTime();
+                    setInterval(() => this.updateTime(), 1000);
+                    
+                    // Инициализация Service Worker для PWA
+                    if ('serviceWorker' in navigator) {
+                        navigator.serviceWorker.register('/sw.js').catch(console.error);
+                    }
+                    
+                    // Проверка prefers-color-scheme
+                    if (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('darkMode')) {
+                        this.darkMode = true;
+                        document.documentElement.classList.add('dark');
+                    }
+                    
+                    // Загрузка избранных услуг
+                    this.loadFavorites();
+                },
+
+                // Обновление времени
+                updateTime() {
+                    const now = new Date();
+                    this.currentTime = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                    this.currentDate = now.toLocaleDateString('ru-RU', { 
+                        day: '2-digit', 
+                        month: '2-digit', 
+                        year: 'numeric' 
+                    });
+                },
+
+                // Логика калькулятора
+                basePrice() {
+                    const pricePerSqm = this.city === 'taldykorgan' ? 230 : 250;
+                    const pricePerRoom = 4000;
+                    const pricePerBath = 3500;
+                    return (this.sqm * pricePerSqm) + (this.rooms * pricePerRoom) + (this.baths * pricePerBath);
+                },
+
+                extrasTotal() {
+                    return Object.values(this.extras)
+                                 .filter(e => e.active)
+                                 .reduce((sum, e) => sum + e.price, 0);
+                },
+
+                typeMultiplier() {
+                    return this.serviceTypes.find(t => t.id === this.activeType).mult;
+                },
+
+                totalPrice() {
+                    const base = this.basePrice() + this.extrasTotal();
+                    return Math.round(base * this.typeMultiplier());
+                },
+
+                finalPrice() {
+                    let price = this.totalPrice();
+                    if (this.promoApplied) {
+                        price = Math.round(price * 0.8); // 20% скидка
+                    }
+                    return price;
+                },
+
+                // Форматирование цены с учётом валюты
+                formatPrice(price) {
+                    const currency = this.currencies.find(c => c.code === this.activeCurrency);
+                    const convertedPrice = Math.round(price / currency.rate);
+                    
+                    if (this.activeCurrency === 'kzt') {
+                        return convertedPrice.toLocaleString('ru-RU') + ' ₸';
+                    } else if (this.activeCurrency === 'usd') {
+                        return '$' + convertedPrice.toLocaleString('en-US', { minimumFractionDigits: 2 });
+                    } else {
+                        return convertedPrice.toLocaleString('ru-RU') + ' ₽';
+                    }
+                },
+
+                // Применение промокода
+                applyPromo() {
+                    if (this.promoCode.toUpperCase() === 'DIREQ_S') {
+                        this.promoApplied = true;
+                        this.promoError = false;
+                        this.showNotification('success', 'Промокод применён!', 'Скидка 20% активирована');
+                        
+                        // Анимация конфетти
+                        if (typeof confetti === 'function') {
+                            confetti({
+                                particleCount: 100,
+                                spread: 70,
+                                origin: { y: 0.6 }
+                            });
+                        }
+                    } else {
+                        this.promoApplied = false;
+                        this.promoError = true;
+                        this.showNotification('error', 'Ошибка', 'Неверный промокод');
+                    }
+                },
+
+                // Модальные окна
+                openModal(type, data = {}) {
+                    this.modalType = type;
+                    this.modalData = data;
+                    this.isModalOpen = true;
+                    this.loginCode = '';
+                    this.loginError = false;
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Трекинг аналитики
+                    this.trackEvent('modal_open', { type, data });
+                },
+
+                closeModal() {
+                    this.isModalOpen = false;
+                    this.modalType = null;
+                    document.body.style.overflow = 'auto';
+                },
+
+                // Уведомления
+                showNotification(type, title, message) {
+                    const icons = {
+                        success: 'fa-solid fa-check-circle',
+                        error: 'fa-solid fa-exclamation-circle',
+                        info: 'fa-solid fa-info-circle'
+                    };
+                    
+                    this.notification = {
+                        show: true,
+                        type,
+                        title,
+                        message,
+                        icon: icons[type]
+                    };
+                    
+                    setTimeout(() => {
+                        this.notification.show = false;
+                    }, 5000);
+                },
+
+                // Админ-панель
+                loginAdmin() {
+                    // В реальном приложении здесь должен быть запрос к API
+                    if (this.loginCode === '123') {
+                        this.view = 'admin';
+                        this.closeModal();
+                        this.showNotification('success', 'Успешный вход', 'Добро пожаловать в админ-панель');
+                        
+                        // Инициализация карты
+                        setTimeout(() => this.initMap(), 100);
+                        
+                        // Трекинг
+                        this.trackEvent('admin_login', { time: new Date().toISOString() });
+                    } else {
+                        this.loginError = true;
+                        this.loginCode = '';
+                        this.showNotification('error', 'Ошибка входа', 'Неверный код доступа');
+                    }
+                },
+
+                get filteredWorkers() {
+                    return this.activeWorkers.filter(w => {
+                        const nameMatch = w.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+                        const cityMatch = this.cityFilter === 'all' || w.city === this.cityFilter;
+                        return nameMatch && cityMatch;
+                    });
+                },
+
+                getStatusColor(status) {
+                    return {
+                        working: 'bg-green-500',
+                        done: 'bg-blue-500',
+                        waiting: 'bg-yellow-500'
+                    }[status] || 'bg-gray-500';
+                },
+
+                getStatusText(status) {
+                    return {
+                        working: 'В работе',
+                        done: 'Завершено',
+                        waiting: 'Ожидает'
+                    }[status] || 'Неизвестно';
+                },
+
+                // Карта Leaflet
+                initMap() {
+                    if (this.map) return;
+                    
+                    this.map = L.map('admin-map', { 
+                        zoomControl: false,
+                        attributionControl: false
+                    }).setView([43.2371, 76.9456], 11);
+                    
+                    // Тёмная тема карты
+                    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                        maxZoom: 19
+                    }).addTo(this.map);
+
+                    // Добавление маркеров
+                    this.activeWorkers.forEach(worker => {
+                        const icon = L.divIcon({
+                            className: 'custom-marker',
+                            html: `
+                                <div class="marker-wrapper">
+                                    <div class="marker-pulse"></div>
+                                    <div class="marker-icon-bg"></div>
+                                    <img src="${worker.img}" class="marker-img">
+                                </div>
+                            `,
+                            iconSize: [50, 50],
+                            iconAnchor: [25, 50]
+                        });
+
+                        const marker = L.marker([worker.lat, worker.lng], { icon }).addTo(this.map);
+                        marker.on('click', () => this.focusWorker(worker));
+                        this.markers.push(marker);
+                    });
+                },
+
+                focusWorker(worker) {
+                    this.selectedWorker = worker;
+                    if (this.map) {
+                        this.map.flyTo([worker.lat, worker.lng], 16, {
+                            animate: true,
+                            duration: 2
+                        });
+                    }
+                },
+
+                // Экспорт данных
+                exportData() {
+                    const data = this.activeWorkers.map(w => ({
+                        Имя: w.name,
+                        Город: w.city,
+                        Локация: w.location,
+                        Статус: this.getStatusText(w.status),
+                        Прогресс: w.progress + '%',
+                        Телефон: w.phone
+                    }));
+                    
+                    const ws = XLSX.utils.json_to_sheet(data);
+                    const wb = XLSX.utils.book_new();
+                    XLSX.utils.book_append_sheet(wb, ws, "Сотрудники");
+                    XLSX.writeFile(wb, "ozge_qadam_employees.xlsx");
+                    
+                    this.showNotification('success', 'Экспорт завершён', 'Данные сохранены в Excel');
+                },
+
+                // Тёмная тема
+                toggleDarkMode() {
+                    this.darkMode = !this.darkMode;
+                    if (this.darkMode) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                    localStorage.setItem('darkMode', this.darkMode);
+                    this.trackEvent('theme_toggle', { darkMode: this.darkMode });
+                },
+
+                // Мультиязычность
+                changeLanguage(lang) {
+                    this.activeLanguage = lang;
+                    localStorage.setItem('language', lang);
+                    this.showNotification('info', 'Язык изменён', 'Настройки сохранены');
+                    this.closeModal();
+                    // Здесь должна быть логика перевода интерфейса
+                },
+
+                // Мультивалютность
+                changeCurrency(currency) {
+                    this.activeCurrency = currency;
+                    localStorage.setItem('currency', currency);
+                    this.showNotification('info', 'Валюта изменена', 'Цены пересчитаны');
+                    this.closeModal();
+                },
+
+                // Загрузка настроек
+                loadSettings() {
+                    const savedDarkMode = localStorage.getItem('darkMode');
+                    if (savedDarkMode !== null) {
+                        this.darkMode = savedDarkMode === 'true';
+                        if (this.darkMode) {
+                            document.documentElement.classList.add('dark');
+                        }
+                    }
+                    
+                    const savedLanguage = localStorage.getItem('language');
+                    if (savedLanguage) this.activeLanguage = savedLanguage;
+                    
+                    const savedCurrency = localStorage.getItem('currency');
+                    if (savedCurrency) this.activeCurrency = savedCurrency;
+                },
+
+                // Сохранение избранного
+                loadFavorites() {
+                    // Логика загрузки избранных услуг из localStorage
+                },
+
+                // Отправка контактной формы
+                submitContactForm() {
+                    if (!this.contactPhone) {
+                        this.showNotification('error', 'Ошибка', 'Введите номер телефона');
+                        return;
+                    }
+                    
+                    this.showNotification('success', 'Заявка отправлена', 'Мы перезвоним вам в течение 5 минут');
+                    this.contactPhone = '';
+                    
+                    // Здесь должна быть отправка на сервер
+                    this.trackEvent('contact_form', { phone: this.contactPhone });
+                },
+
+                // Трекинг событий
+                trackEvent(event, data) {
+                    // Google Analytics
+                    if (typeof gtag === 'function') {
+                        gtag('event', event, data);
+                    }
+                    
+                    // Отправка на свой сервер
+                    const analyticsData = {
+                        event,
+                        data,
+                        timestamp: new Date().toISOString(),
+                        userAgent: navigator.userAgent
+                    };
+                    
+                    // В реальном приложении здесь должен быть fetch на ваш сервер
+                    console.log('Analytics event:', analyticsData);
+                },
+
+                // Вспомогательные функции
+                scrollTo(id) {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                        this.trackEvent('scroll_to', { section: id });
+                    }
+                },
+
+                handleScroll() {
+                    // Логика для параллакс эффектов или ленивой загрузки
+                }
+            }
+        }
+    </script>
+</body>
+</html>
